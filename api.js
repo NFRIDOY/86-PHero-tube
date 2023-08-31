@@ -65,7 +65,7 @@ const loadData = async (category_id) => {
         div.innerHTML = `
         <div class="card w-76 bg-base-100 ">
                 <figure class="relative">
-                    <img class="w-full rounded-lg" src="${card.thumbnail}" alt="Shoes" />
+                    <img class="w-full h-44 rounded-lg" src="${card.thumbnail}" alt="Shoes" />
                     <div class="absolute bottom-3 right-3 bg-[#171717] text-white rounded-[4px] px-2 py-0">3hrs 56 min ago</div>
                 </figure>
                 <div class="card-body flex flex-row items-start ml-0 relative -left-7">
