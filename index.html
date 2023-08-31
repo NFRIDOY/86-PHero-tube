@@ -22,19 +22,19 @@
     </style>
 </head>
 
-<body onload="loadData(1000)" class="max-w-7xl mx-auto my-3">
+<body onload="loadData(1000)" class="max-w-xs md:max-w-2xl lg:max-w-7xl mx-auto my-3">
     <header>
         <section class="navbar flex justify-between">
             <div>
                 <img src="./Logo.png" alt="">
             </div>
             <div>
-                <button class="btn bg-[#25252533] mr-20">
+                <button id="sortDec" class="btn bg-[#25252533] mr-1 md:mr-20 text-xs md:text-lg py-0 px-1 md:py-2 md:px-4">
                     Sort by view
                 </button>
             </div>
             <div>
-                <button class="btn bg-[#FF1F3D] text-white hover:bg-black hover:text-[#FF1F3D]">
+                <button class="btn bg-[#FF1F3D] text-white md:hover:bg-black md:hover:text-[#FF1F3D] text-xs md:text-lg py-0 px-1 md:py-2 md:px-4">
                     Blog
                 </button>
             </div>
@@ -43,11 +43,11 @@
     </header>
 
     <body>
-        <section id="categories" class="flex justify-center">
+        <section id="categories" class="grid grid-cols-2 gap-y-3 md:flex md:flex-row justify-center">
             <!-- onclick="loadData(${})" -->
             <!-- <button  class="btn mx-4"></button> -->
         </section>
-        <section id="cards" class="grid grid-cols-4 gap-6 w-full my-10">
+        <section id="cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full my-10">
             <!-- Demo Card -->
             <!-- <div class="card w-80 bg-base-100 ">
                 <figure class="relative">

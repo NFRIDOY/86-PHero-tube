@@ -88,7 +88,7 @@ const loadCategories = async () => {
 
 }
 loadCategories();
-const loadData = async (category_id) => {
+const loadData = async (category_id,isSort) => {
     if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
 
         const url = `https://openapi.programming-hero.com/api/videos/category/${category_id}`;
@@ -176,3 +176,12 @@ const loadData = async (category_id) => {
 // loadData();
 
 
+// sort by decending
+function sortIt(array) {
+    let sortt = array.sort((a, b) => b - a);
+    console.log(sortt);
+}
+
+document.getElementById("sortDec").addEventListener("click", function sortThis(){
+    console.log("SortThis");
+})
