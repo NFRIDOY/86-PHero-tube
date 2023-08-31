@@ -33,11 +33,12 @@ const loadData = async (category_id) => {
 
     // DOM
     const cardsContainer = document.getElementById("cards");
-    cardsContainer.innerHTML = ``;
+    // cardsContainer.innerHTML = ``;
     for(const card of dataArray){
         // console.log(category.category);
         const div = document.createElement("div");
         div.innerHTML = `
+
         title: ${card.title}
         `;
         // catBtn.classList.add("btn")
