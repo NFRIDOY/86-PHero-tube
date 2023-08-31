@@ -112,7 +112,7 @@ const loadData = async (category_id) => {
         // console.log(card.authors[0].verified.lenght);
 
         const badge = varify(card.authors[0].verified);
-        const time = getTime(card.others.posted_date);
+        const time = getTime(card.others?.posted_date);
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card w-76 bg-base-100 ">
