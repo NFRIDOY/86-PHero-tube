@@ -1,7 +1,7 @@
 # 86-PHero-tube
 
 Github Link- https://github.com/programming-hero-web-course1/b8a6-build-phtube-NFRIDOY
-Live Link- 
+Live Link- https://phero-tube01.netlify.app/
 
 # PHero-tube
 

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <link rel="shortcut icon" href="https://thumb.ac-illust.com/15/15c7d5307af6ea2fcfef45c0ff1936fa_t.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="https://thumb.ac-illust.com/15/15c7d5307af6ea2fcfef45c0ff1936fa_t.jpeg"
+        type="image/x-icon">
 
     <!-- CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
@@ -22,6 +24,7 @@
     </style>
 
 </head>
+
 <body class="max-w-xs md:max-w-2xl lg:max-w-7xl mx-auto my-3">
     <header>
         <section class="navbar flex justify-between">
@@ -31,7 +34,8 @@
                 </a>
             </div>
             <div>
-                <button class="btn bg-[#FF1F3D] text-white md:hover:bg-black md:hover:text-[#FF1F3D] text-xs md:text-lg py-0 px-1 md:py-2 md:px-4">
+                <button
+                    class="btn bg-[#FF1F3D] text-white md:hover:bg-black md:hover:text-[#FF1F3D] text-xs md:text-lg py-0 px-1 md:py-2 md:px-4">
                     <a href="./blog.html">
                         Blog
                     </a>
@@ -41,7 +45,141 @@
         <hr class="my-6 border border-[#25252533]">
     </header>
     <main>
+        <section>
+            <div class=" flex flex-col gap-8">
+                <div class="collapse collapse-arrow bg-base-200">
+                    <input type="radio" name="my-accordion-2" checked="checked" />
+                    <div class="collapse-title text-xl font-medium">
+                        Discuss the scope of var, let, and const
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            In JavaScript, var, let, and const are used to declare variables, but they have different
+                            scopes and behaviors. Understanding their scope is crucial for writing clean and bug-free
+                            code. Let's discuss the scope of each of these variable declarations:
+                        <ul>
+                            <li class="mt-4">
+                                var:
 
+                                var has a function-level scope, which means it is limited to the function in which it is
+                                declared or, if declared outside of any function, it becomes a global variable.
+                                Variables declared with var are hoisted to the top of their containing function or
+                                global
+                                context during the compilation phase, which means they are initialized with undefined
+                                before
+                                the code is executed.
+                                It is not block-scoped, so if declared inside a block (such as an if statement or a for
+                                loop), the variable is still accessible outside of that block.
+                            </li>
+                            <li class="my-4">
+                                let:
+
+                                let was introduced in ECMAScript 6 (ES6) and has a block-level scope, which means it is
+                                limited to the block (enclosed by curly braces) in which it is declared.
+                                Variables declared with let are also hoisted, but they are not initialized with a value.
+                                They remain in a "temporal dead zone" until they are actually declared in the code.
+                                It allows you to create variables that are limited in scope to specific blocks, making
+                                it safer and more predictable than var.
+                            </li>
+                            <li class="">
+                                const:
+
+                                const is also introduced in ES6 and has a block-level scope, similar to let.
+                                Unlike let, variables declared with const cannot be reassigned after they are declared.
+                                However, for objects and arrays declared with const, their properties or elements can be
+                                modified.
+                                Like let, const variables are also hoisted but are not initialized with a value.
+                            </li>
+                        </ul>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow bg-base-200">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title text-xl font-medium">
+                        Tell us the use cases of null and undefined
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            In JavaScript, null and undefined are both special values that indicate the absence of a
+                            meaningful value. However, they are used in slightly different contexts and have distinct
+                            use cases:
+
+                        <ul>
+                            <li class="mt-4">
+                                undefined:
+
+                                undefined is a primitive value in JavaScript that represents the absence of a value or
+                                the lack of initialization of a variable.
+                                It is typically automatically assigned to a variable that has been declared but not
+                                initialized with a value.
+                                It is often used to check if a variable or property exists or has been defined.
+                                Common use cases for undefined include:
+                                <ul>
+                                    <li>
+                                        Checking for the existence of function arguments:
+                                    </li>
+                                    <li>
+                                        Checking if an object property exists:
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <li class="my-4">
+                                null:
+
+                                null is also a primitive value in JavaScript that represents the intentional absence of
+                                any object value or a placeholder for an object that doesn't exist or hasn't been
+                                initialized.
+                                It is typically used when you want to explicitly indicate that a variable or property
+                                should have no value or when you want to clear an object reference.
+                                Common use cases for null include:
+                                <ul>
+                                    <li>
+                                        Clearing object references:
+                                    </li>
+                                    <li>
+                                        Indicating the absence of a value:
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>
+                            In summary, undefined is often used to represent the absence of a value due to variable
+                            initialization, while null is used to indicate the intentional absence of an object value or
+                            to clear object references. Both are important in JavaScript for handling various scenarios
+                            and making your code more robust and predictable.
+                        </p>
+                        </p>
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow bg-base-200">
+                    <input type="radio" name="my-accordion-2" />
+                    <div class="collapse-title text-xl font-medium">
+                        What do you mean by REST API?
+                    </div>
+                    <div class="collapse-content">
+                        <p>
+                            A REST API, which stands for Representational State Transfer Application Programming
+                            Interface, is a foundational architecture for designing web services and networked
+                            applications. It follows a set of principles that promote simplicity, scalability, and
+                            interoperability. In the world of REST, resources are central, and each resource is
+                            identified by a unique URI, such as a web URL, representing data entities or concepts.
+                            Clients communicate with these resources using standard HTTP methods like GET (to retrieve
+                            data), POST (to create new resources), PUT (to update resources), and DELETE (to remove
+                            them). REST APIs are stateless, meaning each request from a client to a server must contain
+                            all necessary information, and the server doesn't retain information about the client's
+                            state. These APIs use different data representations, such as JSON or XML, and they
+                            encourage a uniform and consistent interface, making them a popular choice for building web
+                            services that enable seamless communication between diverse software applications on the
+                            internet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
+
 </html>
