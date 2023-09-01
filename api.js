@@ -88,7 +88,7 @@ const loadCategories = async () => {
 
 }
 loadCategories();
-const loadData = async (category_id,isSort) => {
+const loadData = async (category_id) => {
     if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
 
         const url = `https://openapi.programming-hero.com/api/videos/category/${category_id}`;
@@ -99,56 +99,18 @@ const loadData = async (category_id,isSort) => {
         // console.log(category_id);
         // Vlid category_id: 1000  1001  1003
 
-        // DOM
-        const cardsContainer = document.getElementById("cards");
-        // Clear Before Load New Data
-        cardsContainer.innerHTML = ``;
-        for (const card of dataArray) {
-            // console.log(card.authors[0].profile_picture);
-            // console.log(card.authors[0].profile_name);
-            // console.log(card.authors[0].verified);
-            // varify(card.authors[0].verified === undefined || card.authors[0].verified === "" || card.authors[0].verified === null ? false : card.authors[0].verified );
-            // varify(false)
-            // console.log(card.others.profile_name);
-            // console.log(card.others.views);
-            // console.log(card.others.posted_date);
-            // varify(card.authors[0].verified);
-            // console.log(card.authors[0].verified.lenght);
+        // isSortBool(category_id)
+        displayData(dataArray);
 
-            const badge = varify(card.authors[0].verified);
-            const time = getTime(card.others?.posted_date);
-            const div = document.createElement("div");
-            div.innerHTML = `
-        <div class="card w-76 bg-base-100 ">
-                <figure class="relative">
-                    <img class="w-full h-44 rounded-lg" src="${card.thumbnail}" alt="Shoes" />
-                    <div class="absolute bottom-3 right-3 bg-[#171717] text-white rounded-[4px] px-2 py-0">${time}</div>
-                </figure>
-                <div class="card-body flex flex-row items-start ml-0 relative -left-7">
-                    <div class="avatar">
-                        <div class="w-8 rounded-full">
-                            <img src="${card.authors[0].profile_picture}" />
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="card-title text-lg">
-                        ${card.title}
-                        </h2>
-                        <h3>${card.authors[0].profile_name}
-                            ${badge}
-                        </h3>
-                        <h4>
-                            ${card.others.views} views
-                        </h4>
-                    </div>
-                    
-                </div>
-            </div>
-        `;
-
-            cardsContainer.appendChild(div);
-
-        }
+        // let isSort = false;
+        // // isSort = isSortBool();
+        // console.log();
+        // if (isSort) {
+        //     sortIt(dataArray);
+        // }
+        // else {
+        // }
+        
 
 
     }
@@ -173,15 +135,112 @@ const loadData = async (category_id,isSort) => {
     }
 
 }
+function displayData(dataArray) {
+
+    // DOM
+    const cardsContainer = document.getElementById("cards");
+    // Clear Before Load New Data
+    cardsContainer.innerHTML = ``;
+    for (const card of dataArray) {
+        // console.log(card.authors[0].profile_picture);
+        // console.log(card.authors[0].profile_name);
+        // console.log(card.authors[0].verified);
+        // varify(card.authors[0].verified === undefined || card.authors[0].verified === "" || card.authors[0].verified === null ? false : card.authors[0].verified );
+        // varify(false)
+        // console.log(card.others.profile_name);
+        // console.log(card.others.views);
+        // console.log(card.others.posted_date);
+        // varify(card.authors[0].verified);
+        // console.log(card.authors[0].verified.lenght);
+
+        const badge = varify(card.authors[0].verified);
+        const time = getTime(card.others?.posted_date);
+        const div = document.createElement("div");
+        div.innerHTML = `
+    <div class="card w-76 bg-base-100 ">
+            <figure class="relative">
+                <img class="w-full h-44 rounded-lg" src="${card.thumbnail}" alt="Shoes" />
+                <div class="absolute bottom-3 right-3 bg-[#171717] text-white rounded-[4px] px-2 py-0">${time}</div>
+            </figure>
+            <div class="card-body flex flex-row items-start ml-0 relative -left-7">
+                <div class="avatar">
+                    <div class="w-8 rounded-full">
+                        <img src="${card.authors[0].profile_picture}" />
+                    </div>
+                </div>
+                <div>
+                    <h2 class="card-title text-lg">
+                    ${card.title}
+                    </h2>
+                    <h3>${card.authors[0].profile_name}
+                        ${badge}
+                    </h3>
+                    <h4>
+                        ${card.others.views} views
+                    </h4>
+                </div>
+                
+            </div>
+        </div>
+    `;
+
+        cardsContainer.appendChild(div);
+
+    }
+}
 // loadData();
 
 
 // sort by decending
 function sortIt(array) {
-    let sortt = array.sort((a, b) => b - a);
-    console.log(sortt);
+    let sorted = array.sort((a, b) => b?.others?.views.split("K")[0] - a?.others?.views.split("K")[0]);
+    // console.log(sortt);
+    // return sorted;
+    displayData(sorted);
 }
 
-document.getElementById("sortDec").addEventListener("click", function sortThis(){
-    console.log("SortThis");
-})
+async function isSortBool(category_id=1000) {
+    if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
+
+        const url = `https://openapi.programming-hero.com/api/videos/category/${category_id}`;
+        const res = await fetch(url)
+        const data = await res.json()
+        const dataArray = data.data;
+        // console.log(dataArray);
+        // console.log(category_id);
+        // Vlid category_id: 1000  1001  1003
+
+        sortIt(dataArray);
+        
+        // let isSort = false;
+        // // isSort = isSortBool();
+        // console.log();
+        // if (isSort) {
+        // }
+        // else {
+        //     displayData(dataArray);
+        // }
+        
+
+
+    }
+    else if (category_id != 1000 || category_id != 1001 || category_id != 1003) {
+        // console.log(category_id, "data Note Found!!");
+
+        const noData = document.getElementById("noData");
+        const cardsContainer = document.getElementById("cards");
+        cardsContainer.innerHTML = ``;
+        // const div = document.createElement("div");
+        noData.innerHTML = `
+        <div class="flex flex-col items-center my-32">
+                <div>
+                    <img src="./Icon.png" alt="">
+                </div>
+                <div class="text-3xl my-10">Oops!! Sorry, There is no content here</div>
+        </div>
+        `;
+
+        // cardsContainer.appendChild(div);
+
+    }
+}
