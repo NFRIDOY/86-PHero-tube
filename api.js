@@ -1,3 +1,4 @@
+let global_category_id = 1000;
 const varifyElement = document.getElementById("varifyB");
 function varify(v) {
     if (v) {
@@ -90,7 +91,8 @@ const loadCategories = async () => {
 loadCategories();
 const loadData = async (category_id) => {
     if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
-
+        global_category_id = category_id;
+        console.log("Insite LoadData: ", global_category_id);
         const url = `https://openapi.programming-hero.com/api/videos/category/${category_id}`;
         const res = await fetch(url)
         const data = await res.json()
@@ -100,7 +102,15 @@ const loadData = async (category_id) => {
         // Vlid category_id: 1000  1001  1003
 
         // isSortBool(category_id)
+
+        const sortBtnContainer = document.getElementById("sort-btn-container");
+        // sortBtnContainer.innerHTML = ``;
+        
+        // sortBtnContainer.innerHTML = `<button onclick="isSortBool(${category_id})" id="sortDec" class="btn bg-[#25252533] mr-1 md:mr-20 text-xs md:text-lg py-0 px-1 md:py-2 md:px-4">Sort by view</button>`;
         displayData(dataArray);
+
+        
+        // sortBtnContainer.appendChild()
 
         // let isSort = false;
         // // isSort = isSortBool();
@@ -141,6 +151,7 @@ function displayData(dataArray) {
     const cardsContainer = document.getElementById("cards");
     // Clear Before Load New Data
     cardsContainer.innerHTML = ``;
+    document.getElementById("noData").innerHTML = ``;
     for (const card of dataArray) {
         // console.log(card.authors[0].profile_picture);
         // console.log(card.authors[0].profile_name);
@@ -194,22 +205,22 @@ function displayData(dataArray) {
 // sort by decending
 function sortIt(array) {
     let sorted = array.sort((a, b) => b?.others?.views.split("K")[0] - a?.others?.views.split("K")[0]);
-    // console.log(sortt);
+    // console.log(sorted);
     // return sorted;
     displayData(sorted);
 }
 
 async function isSortBool(category_id=1000) {
     if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
-
+        console.log(global_category_id);
         const url = `https://openapi.programming-hero.com/api/videos/category/${category_id}`;
         const res = await fetch(url)
         const data = await res.json()
         const dataArray = data.data;
-        // console.log(dataArray);
         // console.log(category_id);
         // Vlid category_id: 1000  1001  1003
-
+        
+        // console.log(dataArray);
         sortIt(dataArray);
         
         // let isSort = false;
@@ -225,22 +236,26 @@ async function isSortBool(category_id=1000) {
 
     }
     else if (category_id != 1000 || category_id != 1001 || category_id != 1003) {
-        // console.log(category_id, "data Note Found!!");
+        // // console.log(category_id, "data Note Found!!");
 
-        const noData = document.getElementById("noData");
-        const cardsContainer = document.getElementById("cards");
-        cardsContainer.innerHTML = ``;
-        // const div = document.createElement("div");
-        noData.innerHTML = `
-        <div class="flex flex-col items-center my-32">
-                <div>
-                    <img src="./Icon.png" alt="">
-                </div>
-                <div class="text-3xl my-10">Oops!! Sorry, There is no content here</div>
-        </div>
-        `;
+        // const noData = document.getElementById("noData");
+        // const cardsContainer = document.getElementById("cards");
+        // cardsContainer.innerHTML = ``;
+        // // const div = document.createElement("div");
+        // noData.innerHTML = `
+        // <div class="flex flex-col items-center my-32">
+        //         <div>
+        //             <img src="./Icon.png" alt="">
+        //         </div>
+        //         <div class="text-3xl my-10">Oops!! Sorry, There is no content here</div>
+        // </div>
+        // `;
 
         // cardsContainer.appendChild(div);
 
     }
 }
+
+// document.getElementById("sortDec").addEventListener("click", function callisSortBool(category_id,global_category_id) {  
+//     isSortBool(category_id,global_category_id);
+// })
