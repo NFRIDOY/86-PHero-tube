@@ -1,4 +1,5 @@
 let global_category_id = 1000;
+// let ui = 1000;
 const varifyElement = document.getElementById("varifyB");
 function varify(v) {
     if (v) {
@@ -84,7 +85,7 @@ const loadCategories = async () => {
         // catBtn.classList.add("mx-4")
 
         categoriesContainer.appendChild(catBtn);
-
+        global_category_id = category.category_id;
     }
 
 }
@@ -103,6 +104,15 @@ const loadData = async (category_id) => {
 
         // isSortBool(category_id)
 
+        if(category_id == 1000){
+            ui = category_id;
+        }
+        else if(category_id == 1001) {
+            ui = category_id;
+        }
+        else if(category_id == 1003) {
+            ui = category_id;
+        }
         const sortBtnContainer = document.getElementById("sort-btn-container");
         // sortBtnContainer.innerHTML = ``;
         
@@ -210,6 +220,11 @@ function sortIt(array) {
     displayData(sorted);
 }
 
+const sortDec = document.getElementById("sortDec");
+sortDec.addEventListener("click", function (){
+    isSortBool(global_category_id);
+
+})
 async function isSortBool(category_id=1000) {
     if (category_id == 1000 || category_id == 1001 || category_id == 1003) {
         console.log(global_category_id);
